@@ -114,3 +114,92 @@ function gameObject() {
         },
     };
 }
+function numPointsScored(playerName){
+    const game=gameObject();
+    for (const team in game){
+        const players=game[team].players;
+        for(let player in players){
+            if (player===playerName){
+                return players[player].points;
+            }
+
+        }
+    }
+    return "Player not found";
+}
+
+function shoeSize(playerName){
+    const game=gameObject();
+    for(const team in game){
+        const players=game[team].players;
+        for (let player in players){
+            if (player===playerName){
+                return players[player].shoe;
+            }
+        }
+    }
+    return "Player not found";
+}
+
+function teamColors(teamName){
+    const game=gameObject();
+    for (const team in game){
+        if (game[team].teamName===teamName){
+            return game[team].colors;
+        }
+    }
+    return "Team not found";
+}
+
+function teamNames(){
+    const game=gameObject();
+    const names=[];
+    for (const team in game){
+        names.push(game[team].teamName);
+
+    }
+    return names;
+}
+
+function playerNumbers(teamName){
+    const game=gameObject();
+    for (const team in game){
+        if (game[team].teamName===teamName){
+            const players=game[team].players;
+            const numbers=[];
+            for (let player in players){
+                numbers.push(players[player].number);
+            }
+            return numbers;
+        }
+    }
+    return "Team not found";
+}
+function playerStats(playerName){
+    const game=gameObject();
+    for (const team in game){
+        const players=game[team].players;
+        for (let player in players){
+            if (player===playerName){
+                return players[player];
+            }
+        }
+    }
+    return "Player not found";
+}
+
+function bigShoeRebounds(){
+    const game=gameObject();
+    let biggestShoe=0;
+    let rebounds=0;
+    for (const team in game){
+        const players=game[team].players;
+        for (let player in players){
+            if (players[player].shoe>biggestShoe){
+                biggestShoe=players[player].shoe;
+                rebounds=players[player].rebounds;
+            }
+        }
+    }
+    return rebounds;
+}
